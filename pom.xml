@@ -5,11 +5,11 @@
 	<groupId>cc.hdas</groupId>
 	<artifactId>try_mvn_war_jar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>Trial Maven project with a jar and war</name>
 	<description></description>
-	
+
 	<scm>
 		<connection>scm:git:git@github.com:hirakendu/try_mvn_war_jar.git</connection>
 		<url>scm:git:git@github.com:hirakendu/try_mvn_war_jar.git</url>
@@ -61,15 +61,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.3.2</version>
-				<executions>
-					<execution>
-						<id>make-a-jar</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<archive>
 						<manifest>
@@ -85,6 +76,40 @@
 				<configuration>
 					<archiveClasses>true</archiveClasses>
 				</configuration>
+				<executions>
+					<execution>
+						<id>make-war</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>cc.hdas.try_mvn_war_jar.HelloMain</mainClass>
+						</manifest>
+					</archive>
+					<descriptors>
+						<descriptor>src/main/maven/assembly_zip.xml</descriptor>
+					</descriptors>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

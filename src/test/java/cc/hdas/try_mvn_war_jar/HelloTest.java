@@ -9,7 +9,8 @@ public class HelloTest {
 	@Test
 	public void testHello() {
 		Hello hello = new Hello();
-		assertEquals("Hello World!", hello.hello());
+		assertEquals("Hello World!", hello.hello(null));
+		assertEquals("Hello Java!", hello.hello("Java"));
 	}
 	
 
