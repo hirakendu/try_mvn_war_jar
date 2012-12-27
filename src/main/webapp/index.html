@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+
+<head>
+<script type='text/javascript'>
+var str = "";
+var request = new XMLHttpRequest();
+request.open("GET", "hello?name=World", false);
+request.onreadystatechange=function() {
+	if ((request.readyState == 4) && (request.status == 200)) {
+		str = request.responseText;
+	}
+}
+request.send();
+document.write(str);
+</script>
+</head>
+
+<body>
+
+</body>
